@@ -3,6 +3,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 from ask import alexa
+import car_accidents
 
 def lambda_handler(request_obj, context=None):
     return alexa.route_request(request_obj)
@@ -42,6 +43,7 @@ def car_accidents_intent_handler(request):
     logger.info('car_accidents_intent_handler')
     city = request.get_slot_value('city')
     year = request.get_slot_value('year')
+    num_card_acc = car_accidents.get_num_accidents(year=year, city=city)
     return alexa.respond(
         '''
           <speak>
@@ -50,7 +52,7 @@ def car_accidents_intent_handler(request):
           car accidents in %s in
           <say-as interpret-as="date" format="y">%s</say-as>,
           </speak>
-        ''' % (year, city, year),
+        ''' % (num_card_acc, city, year),
         end_session=True, is_ssml=True)
 
 @alexa.intent('PopulationSweden')
