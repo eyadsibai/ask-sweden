@@ -1,68 +1,80 @@
 """
 In this file we specify default event handlers which are then populated into the handler map using metaprogramming
 Copyright Anjishnu Kumar 2015
-Happy Hacking! 
+Happy Hacking!
 """
 
 from ask import alexa
 
-def lambda_handler(request_obj, context={}):
-    ''' All requests start here '''    
-    return alexa.route_request(request_obj)
+def lambda_handler(request_obj, context=None):
+    '''
+    This is the main function to enter to enter into this code.
+    If you are hosting this code on AWS Lambda, this should be the entry point.
+    Otherwise your server can hit this code as long as you remember that the
+    input 'request_obj' is JSON request converted into a nested python object.
+    '''
 
-@alexa.default
+    metadata = {'user_name' : 'SomeRandomDude'} # add your own metadata to the request using key value pairs
+
+    ''' inject user relevant metadata into the request if you want to, here.
+    e.g. Something like :
+    ... metadata = {'user_name' : some_database.query_user_name(request.get_user_id())}
+
+    Then in the handler function you can do something like -
+    ... return alexa.create_response('Hello there {}!'.format(request.metadata['user_name']))
+    '''
+    return alexa.route_request(request_obj, metadata)
+
+
+@alexa.default()
 def default_handler(request):
-    """ The default handler gets invoked if no handler is set for a request """
-    return alexa.create_response(message="Just ask")
+    """ The default handler gets invoked if no handler is set for a request type """
+    return alexa.respond('Just ask').with_card('Hello World')
 
 
 @alexa.request("LaunchRequest")
 def launch_request_handler(request):
-    return alexa.create_response(message="Welcome to Useful Science. We summarize complicated "
-                                 "scientific publications in easy to understand forms!",
-                                 reprompt_message='What would you like to know more about? '
-                                 'You can ask for the latest posts or posts about a particular topic')
+    ''' Handler for LaunchRequest '''
+    return alexa.create_response(message="Hello Welcome to My Recipes!")
 
 
-@alexa.request(request_type="SessionEndedRequest")
+@alexa.request("SessionEndedRequest")
 def session_ended_request_handler(request):
     return alexa.create_response(message="Goodbye!")
 
-@alexa.intent('GetPosts')
-def get_posts_intent_handler(request):    
 
-    def resolve_slots(text):
-        if text in useful_science.categories:
-            return text        
-        return 'new'
+@alexa.intent('GetRecipeIntent')
+def get_recipe_intent_handler(request):
+    """
+    You can insert arbitrary business logic code here
+    """
+
+    # Get variables like userId, slots, intent name etc from the 'Request' object
+    ingredient = request.slots["Ingredient"]  # Gets an Ingredient Slot from the Request object.
     
-    category_text = request.slots['Category']
-    category = resolve_slots(category_text)
-    post = useful_science.post_cache.get_post(category)
+    if ingredient == None:
+        return alexa.create_response("Could not find an ingredient!")
 
-    card_content = "{0} Link: {1}".format(post['summary'],
-                                          post['permalink'])
+    # All manipulations to the request's session object are automatically reflected in the request returned to Amazon.
+    # For e.g. This statement adds a new session attribute (automatically returned with the response) storing the
+    # Last seen ingredient value in the 'last_ingredient' key.
 
-    card = alexa.create_card(title=post['meta_title'],
-                             subtitle=post['categories'],
-                             content=card_content)
-    
-    return alexa.create_response(message=post['summary'],
-                                 end_session=True,
-                                 card_obj=card)
+    request.session['last_ingredient'] = ingredient # Automatically returned as a sessionAttribute
+
+    # Modifying state like this saves us from explicitly having to return Session objects after every response
+
+    # alexa can also build cards which can be sent as part of the response
+    card = alexa.create_card(title="GetRecipeIntent activated", subtitle=None,
+                             content="asked alexa to find a recipe using {}".format(ingredient))
+
+    return alexa.create_response("Finding a recipe with the ingredient {}".format(ingredient),
+                                 end_session=False, card_obj=card)
 
 
-@alexa.intent('AMAZON.HelpIntent')
-def help_intent_handler(request):
-    cat_list = [cat for cat in useful_science.categories]
-    pre = cat_list[:-1]
-    post = cat_list[-1:]
-    formatted = " ".join(map(lambda x : x+",", pre) + ['and'] + post)
-    message = ["You can ask for posts in the following categories - ",
-               formatted]          
-    return alexa.create_response(message=' '.join(message))
 
-                                 
-@alexa.intent('AMAZON.StopIntent')
-def stop_intent_handler(request):
-    return alexa.create_response(message="Goodbye!")
+@alexa.intent('NextRecipeIntent')
+def next_recipe_intent_handler(request):
+    """
+    You can insert arbitrary business logic code here
+    """
+    return alexa.create_response(message="Getting Next Recipe ... 123")
