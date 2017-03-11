@@ -1,3 +1,4 @@
+```
 # Install virtualenv.
 pip2 install virtualenv
 
@@ -9,3 +10,7 @@ source .venv/bin/activate
 
 # Install the dependencies.
 pip install -r requirements.txt
+
+# Do it.
+./doit.sh
+```
