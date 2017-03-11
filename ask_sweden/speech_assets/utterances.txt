@@ -12,5 +12,4 @@ NumberOfCars    how many cars were there in {city} in {year}
 NumberOfCars    how many cars were there in {year}
 PopulationSweden what is the expected population of Sweden in {year} 
 PopulationSweden what will be  the population of Sweden in {year} 
-PopulationSweden what was the expected  population of Sweden in {year} 
 
