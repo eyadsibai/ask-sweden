@@ -51,10 +51,16 @@ def stop_intent_handler(request):
 def car_accidents_intent_handler(request):
     logger.info('car_accidents_intent_handler')
     logger.info(request.get_slot_map())
+
     city = request.get_slot_value('city')
     year = request.get_slot_value('year')
+
+    if not city:
+        return alexa.respond('Sorry, which city?')
+
     num_card_acc = car_accidents.get_num_accidents(year=int(year), city=city)
     logger.info('%s accidents in %s in %s', num_card_acc, city, year)
+
     return alexa.respond(
         '''
           <speak>
