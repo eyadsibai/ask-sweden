@@ -104,3 +104,17 @@ def water_usage_stockholm(request):
         </speak>
         """ % (year, car_accidents.get_water_usage_stockholm(year)),
         end_session=True, is_ssml=True)
+
+
+@alexa.intent('Apartments')
+def housing_numbers(request):
+    year = request.get_slot_value('year')
+    logger.info('apartments')
+    logger.info(request.get_slot_map())
+    return alexa.respond(
+        """
+        <speak>
+        the number of apartments built during that year in Stockholm, is <say-as interpret-as="cardinal">%s</say-as>
+        </speak>
+        """ % (car_accidents.get_num_apartments_stockholm(year)),
+    )
