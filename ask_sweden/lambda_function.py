@@ -94,11 +94,13 @@ def population_intent_handler(request):
 @alexa.intent('WaterUsage')
 def water_usage_stockholm(request):
     year = request.get_slot_value('year')
-
+    logger.info('water_usage_stockholm')
+    logger.info(request.get_slot_map())
     return alexa.respond(
         """
         <speak>
         the water consumption in Stockholm in <say-as interpret-as="date" format="y">{year}</say-as>,
         is <say-as interpret-as="cardinal">{result}</say-as>
+        </speak>
         """.format(year=year, result=car_accidents.get_water_usage_stockholm(year))
     )
