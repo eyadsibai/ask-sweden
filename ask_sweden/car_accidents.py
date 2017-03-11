@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def read_data():
-    return pd.read_csv('data/car_accidents.csv.gz', encoding='UTF-8')
+    return pd.read_csv('data/car_accidents.csv', encoding='UTF-8')
 
 
 def get_num_accidents(year, city):

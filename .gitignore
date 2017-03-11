@@ -1,5 +1,5 @@
 ### https://raw.github.com/github/gitignore/1489551937b44864d07b87891ab95af439634e02/python.gitignore
-
+ask-sweden.zip
 .idea
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -95,5 +95,3 @@ ENV/
 
 # Rope project settings
 .ropeproject
-
-
