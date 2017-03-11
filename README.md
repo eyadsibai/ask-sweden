@@ -1,16 +1,24 @@
-```
-# Install virtualenv.
-pip2 install virtualenv
+## How do?
 
-# Create a virtualenv.
-virtualenv -p `which python2` .venv
+1. Install `virtualenv`.
 
-# Activate the virtualenv.
-source .venv/bin/activate
+       pip2 install virtualenv
 
-# Install the dependencies.
-pip install -r requirements.txt
+2. Create a virtualenv and activate it.
 
-# Do it.
-./doit.sh
-```
+       virtualenv -p `which python2` .venv
+       source .venv/bin/activate
+
+3. Activate the virtualenv.
+
+       pip install -r requirements.txt
+
+4. Hackity hack.
+
+5. Create the deployment package.
+
+       ./bundle.sh
+
+6. Push it. Replace `hackweek` with whatever you've called your `awscli` profile.
+
+       aws --profile hackweek lambda update-function-code --function askSweden222 --zip-file fileb://ask-sweden.zip
