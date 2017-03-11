@@ -1,6 +1,7 @@
 import logging
 from ask import alexa
 import car_accidents
+import expected_population
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -77,13 +78,14 @@ def population_intent_handler(request):
     logger.info('population_sweden_intent_handler')
     logger.info(request.get_slot_map())
     year = request.get_slot_value('year')
+
     return alexa.respond(
         '''
           <speak>
-          The population of %s was
+          The population of Sweden was
           <say-as interpret-as="cardinal">%s</say-as>
           in
           <say-as interpret-as="date" format="y">%s</say-as>,
           </speak>
-        ''' % (country, 5000, year),
+        ''' % (expected_population.get_expected_population(year), year),
         end_session=True, is_ssml=True)
