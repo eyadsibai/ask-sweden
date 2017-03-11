@@ -16,15 +16,29 @@
       "intent": "CarAccidents",
       "slots": [
         {
-          "name": "City",
+          "name": "city",
           "type": "Cities"
         },
         {
-          "name": "Year",
-          "type": "AMAZON.DATE"
+          "name": "year",
+          "type": "AMAZON.FOUR_DIGIT_NUMBER"
         }
       ]
-    },{
+    },
+    {
+      "intent": "NumberOfCars",
+      "slots": [
+        {
+          "name": "city",
+          "type": "Cities"
+        },
+        {
+          "name": "year",
+          "type": "AMAZON.FOUR_DIGIT_NUMBER"
+        }
+      ]
+    },
+    {
       "intent": "PopulationSweden",
       "slots": [
         {
@@ -33,9 +47,10 @@
         },
         {
           "name": "Year",
-          "type": "AMAZON.DATE"
+          "type": "AMAZON.FOUR_DIGIT_NUMBER"
         }
       ]
     }
   ]
 }
+
