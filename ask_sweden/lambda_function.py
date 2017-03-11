@@ -89,3 +89,16 @@ def population_intent_handler(request):
           </speak>
         ''' % (year, expected_population.get_expected_population(year)),
         end_session=True, is_ssml=True)
+
+
+@alexa.intent('WaterUsage')
+def water_usage_stockholm(request):
+    year = request.get_slot_value('year')
+
+    return alexa.respond(
+        """
+        <speak>
+        the water consumption in Stockholm in <say-as interpret-as="date" format="y">{year}</say-as>,
+        is <say-as interpret-as="cardinal">{result}</say-as>
+        """.format(year=year, result=car_accidents.get_water_usage_stockholm(year))
+    )

@@ -12,4 +12,5 @@ NumberOfCars    how many cars were there in {city} in {year}
 NumberOfCars    how many cars were there in {year}
 PopulationSweden what is the expected population of Sweden in {year} 
 PopulationSweden what will be the population of Sweden in {year}
-
+WaterUsage what is the water consumption in Stockholm in {year}
+WaterUsage what is the water consumption in {year} in Stockholm
