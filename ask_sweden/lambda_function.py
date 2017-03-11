@@ -26,7 +26,7 @@ def lambda_handler(request_obj, context=None):
     return alexa.route_request(request_obj, metadata)
 
 
-@alexa.default()
+@alexa.default
 def default_handler(request):
     """ The default handler gets invoked if no handler is set for a request type """
     return alexa.respond('Just ask').with_card('Hello World')

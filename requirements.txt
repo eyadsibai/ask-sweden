@@ -1,2 +1,2 @@
-ask-alexa-pykit==0.5.6
+git+https://github.com/anjishnu/ask-alexa-pykit.git#egg=ask-alexa-pykit
 requests==2.13.0
