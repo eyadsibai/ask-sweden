@@ -24,6 +24,18 @@
           "type": "AMAZON.DATE"
         }
       ]
+    },{
+      "intent": "PopulationSweden",
+      "slots": [
+        {
+          "name": "Country",
+          "type": "Country"
+        },
+        {
+          "name": "Year",
+          "type": "AMAZON.DATE"
+        }
+      ]
     }
   ]
 }

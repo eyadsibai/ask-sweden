@@ -43,3 +43,10 @@ def car_accidents_intent_handler(request):
     city = request.get_slot_value('city')
     year = request.get_slot_value('year')
     return alexa.respond('There were %s accidents in %s in %s' % (year, city, year), end_session=True)
+
+@alexa.intent('PopulationSweden')
+def population_intent_handler(request):
+    logger.info('population_sweden_intent_handler')
+    country = request.get_slot_value('country')
+    year = request.get_slot_value('year')
+    return alexa.respond('The population of %s was %s in %s' % (country, 5000, year), end_session=True)
