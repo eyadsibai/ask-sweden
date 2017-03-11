@@ -87,5 +87,5 @@ def population_intent_handler(request):
           The expected population of Sweden is going to be
           <say-as interpret-as="cardinal">%s</say-as>
           </speak>
-        ''' % (expected_population.get_expected_population(year), year),
+        ''' % (year, expected_population.get_expected_population(year)),
         end_session=True, is_ssml=True)
