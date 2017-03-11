@@ -82,10 +82,10 @@ def population_intent_handler(request):
     return alexa.respond(
         '''
           <speak>
-          The population of Sweden was
-          <say-as interpret-as="cardinal">%s</say-as>
           in
           <say-as interpret-as="date" format="y">%s</say-as>,
+          The expected population of Sweden is going to be
+          <say-as interpret-as="cardinal">%s</say-as>
           </speak>
         ''' % (expected_population.get_expected_population(year), year),
         end_session=True, is_ssml=True)
