@@ -41,9 +41,11 @@ def stop_intent_handler(request):
 @alexa.intent('CarAccidents')
 def car_accidents_intent_handler(request):
     logger.info('car_accidents_intent_handler')
+    logger.info(request.get_slot_map())
     city = request.get_slot_value('city')
     year = request.get_slot_value('year')
     num_card_acc = car_accidents.get_num_accidents(year=year, city=city)
+    logger.info('%s accidents in %s in %s', num_card_acc, city, year)
     return alexa.respond(
         '''
           <speak>
@@ -58,6 +60,7 @@ def car_accidents_intent_handler(request):
 @alexa.intent('PopulationSweden')
 def population_intent_handler(request):
     logger.info('population_sweden_intent_handler')
+    logger.info(request.get_slot_map())
     year = request.get_slot_value('year')
     return alexa.respond(
         '''
