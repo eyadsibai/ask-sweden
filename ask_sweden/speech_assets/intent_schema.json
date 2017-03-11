@@ -42,15 +42,10 @@
       "intent": "PopulationSweden",
       "slots": [
         {
-          "name": "Country",
-          "type": "Country"
-        },
-        {
-          "name": "Year",
+          "name": "year",
           "type": "AMAZON.FOUR_DIGIT_NUMBER"
         }
       ]
     }
   ]
 }
-

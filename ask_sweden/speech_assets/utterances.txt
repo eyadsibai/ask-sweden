@@ -1,11 +1,12 @@
-CarAccidents	how many car accidents happened in  {city} in {year}
-CarAccidents	how many car accidents happened in  {year} in {city} 
-CarAccidents	in  {year} how many care accidents happend for {city}
-CarAccidents	give me the number of accidents for  {city} in {year}
+CarAccidents    how many car accidents happened in  {city} in {year}
+CarAccidents    how many car accidents happened in  {year} in {city}
+CarAccidents    in  {year} how many care accidents happend for {city}
+CarAccidents    give me the number of accidents for  {city} in {year}
 CarAccidents    {city} {year}
 NumberOfCars    how many cars are in {city}
 NumberOfCars    how many cars were there in {city} in {year}
 NumberOfCars    how many cars were there in {year}
-PopulationSweden what is the expected population of {country} in {year} ?
-PopulationSweden what is the population of {country} in {year} ?
-PopulationSweden what was the population of {country} in {year} ?
+PopulationSweden what is the expected population of Sweden in {year} 
+PopulationSweden what will be  the population of Sweden in {year} 
+PopulationSweden what was the expected  population of Sweden in {year} 
+
