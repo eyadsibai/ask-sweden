@@ -1,10 +1,9 @@
 import logging
+from ask import alexa
+import car_accidents
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-
-from ask import alexa
-import car_accidents
 
 
 def lambda_handler(request_obj, context=None):
