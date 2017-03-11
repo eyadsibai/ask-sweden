@@ -14,3 +14,4 @@ PopulationSweden what is the expected population of Sweden in {year}
 PopulationSweden what will be the population of Sweden in {year}
 WaterUsage what is the water consumption in Stockholm in {year}
 WaterUsage what is the water consumption in {year} in Stockholm
+NewHousing what is the number of new apartments built in {year} in {city}
