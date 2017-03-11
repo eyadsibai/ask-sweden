@@ -53,7 +53,7 @@ def get_recipe_intent_handler(request):
     # Get variables like userId, slots, intent name etc from the 'Request' object
     ingredient = request.slots["Ingredient"]  # Gets an Ingredient Slot from the Request object.
 
-    if ingredient == None:
+    if ingredient is None:
         return alexa.create_response("Could not find an ingredient!")
 
     # All manipulations to the request's session object are automatically reflected in the request returned to Amazon.
