@@ -97,12 +97,12 @@ def water_usage_stockholm(request):
     logger.info('water_usage_stockholm')
     logger.info(request.get_slot_map())
     return alexa.respond(
-        """
-        <speak>
-        the water consumption in Stockholm in <say-as interpret-as="date" format="y">%s</say-as>,
-        is <say-as interpret-as="cardinal">%s</say-as>
-        </speak>
-        """ % (year, car_accidents.get_water_usage_stockholm(year)),
+        '''
+            <speak>
+            the water consumption in Stockholm in <say-as interpret-as="date" format="y">%s</say-as>,
+            is <say-as interpret-as="cardinal">%s</say-as>
+            </speak>
+        ''' % (year, car_accidents.get_water_usage_stockholm(year)),
         end_session=True, is_ssml=True)
 
 
@@ -112,9 +112,9 @@ def housing_numbers(request):
     logger.info('apartments')
     logger.info(request.get_slot_map())
     return alexa.respond(
-        """
+        '''
         <speak>
         the number of apartments built during that year in Stockholm, is <say-as interpret-as="cardinal">%s</say-as>
         </speak>
-        """ % (car_accidents.get_num_apartments_stockholm(year)),
+        ''' % (car_accidents.get_num_apartments_stockholm(year)),
     )
