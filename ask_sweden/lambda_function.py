@@ -15,24 +15,24 @@ def default_handler(request):
 @alexa.request("LaunchRequest")
 def launch_request_handler(request):
     logger.info('launch_request_handler')
-    return alexa.create_response(message='You can ask me about car accidents.')
+    return alexa.respond('You can ask me about car accidents.')
 
 @alexa.request("SessionEndedRequest")
 def session_ended_request_handler(request):
     logger.info('session_ended_request_handler')
-    return alexa.create_response(message="Goodbye!")
+    return alexa.respond('Goodbye.')
 
 @alexa.intent('AMAZON.CancelIntent')
 def cancel_intent_handler(request):
     logger.info('cancel_intent_handler')
-    return alexa.create_response(message='ok', end_session=True)
+    return alexa.respond('Okay.', end_session=True)
 
 @alexa.intent('AMAZON.HelpIntent')
 def help_intent_handler(request):
     logger.info('help_intent_handler')
-    return alexa.create_response(message='You can ask me about car accidents.')
+    return alexa.respond('You can ask me about car accidents.')
 
 @alexa.intent('AMAZON.StopIntent')
 def stop_intent_handler(request):
     logger.info('stop_intent_handler')
-    return alexa.create_response(message='ok', end_session=True)
+    return alexa.respond('Okay.', end_session=True)
