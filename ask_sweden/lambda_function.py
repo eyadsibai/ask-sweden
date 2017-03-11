@@ -20,7 +20,7 @@ def default_handler(request):
 @alexa.request("LaunchRequest")
 def launch_request_handler(request):
     logger.info('launch_request_handler')
-    return alexa.respond('You can ask me about car accidents.', end_session=True)
+    return alexa.respond('Ask me about any public data about Sweden.', end_session=True)
 
 
 @alexa.request("SessionEndedRequest")
