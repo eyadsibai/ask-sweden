@@ -42,11 +42,29 @@ def car_accidents_intent_handler(request):
     logger.info('car_accidents_intent_handler')
     city = request.get_slot_value('city')
     year = request.get_slot_value('year')
-    return alexa.respond('There were %s accidents in %s in %s' % (year, city, year), end_session=True)
+    return alexa.respond(
+        '''
+          <speak>
+          There were
+          <say-as interpret-as="cardinal">%s</say-as>
+          car accidents in %s in
+          <say-as interpret-as="date" format="y">%s</say-as>,
+          </speak>
+        ''' % (year, city, year),
+        end_session=True, is_ssml=True)
 
 @alexa.intent('PopulationSweden')
 def population_intent_handler(request):
     logger.info('population_sweden_intent_handler')
     country = request.get_slot_value('country')
     year = request.get_slot_value('year')
-    return alexa.respond('The population of %s was %s in %s' % (country, 5000, year), end_session=True)
+    return alexa.respond(
+        '''
+          <speak>
+          The population of %s was
+          <say-as interpret-as="cardinal">%s</say-as>
+          in
+          <say-as interpret-as="date" format="y">%s</say-as>,
+          </speak>
+        ''' % (country, 5000, year),
+        end_session=True, is_ssml=True)
