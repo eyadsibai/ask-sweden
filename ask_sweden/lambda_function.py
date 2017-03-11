@@ -6,6 +6,7 @@ Happy Hacking!
 
 from ask import alexa
 
+
 def lambda_handler(request_obj, context=None):
     '''
     This is the main function to enter to enter into this code.
@@ -14,7 +15,7 @@ def lambda_handler(request_obj, context=None):
     input 'request_obj' is JSON request converted into a nested python object.
     '''
 
-    metadata = {'user_name' : 'SomeRandomDude'} # add your own metadata to the request using key value pairs
+    metadata = {'user_name': 'SomeRandomDude'}  # add your own metadata to the request using key value pairs
 
     ''' inject user relevant metadata into the request if you want to, here.
     e.g. Something like :
@@ -51,7 +52,7 @@ def get_recipe_intent_handler(request):
 
     # Get variables like userId, slots, intent name etc from the 'Request' object
     ingredient = request.slots["Ingredient"]  # Gets an Ingredient Slot from the Request object.
-    
+
     if ingredient == None:
         return alexa.create_response("Could not find an ingredient!")
 
@@ -59,7 +60,7 @@ def get_recipe_intent_handler(request):
     # For e.g. This statement adds a new session attribute (automatically returned with the response) storing the
     # Last seen ingredient value in the 'last_ingredient' key.
 
-    request.session['last_ingredient'] = ingredient # Automatically returned as a sessionAttribute
+    request.session['last_ingredient'] = ingredient  # Automatically returned as a sessionAttribute
 
     # Modifying state like this saves us from explicitly having to return Session objects after every response
 
@@ -69,7 +70,6 @@ def get_recipe_intent_handler(request):
 
     return alexa.create_response("Finding a recipe with the ingredient {}".format(ingredient),
                                  end_session=False, card_obj=card)
-
 
 
 @alexa.intent('NextRecipeIntent')
