@@ -99,8 +99,8 @@ def water_usage_stockholm(request):
     return alexa.respond(
         """
         <speak>
-        the water consumption in Stockholm in <say-as interpret-as="date" format="y">{year}</say-as>,
-        is <say-as interpret-as="cardinal">{result}</say-as>
+        the water consumption in Stockholm in <say-as interpret-as="date" format="y">%s</say-as>,
+        is <say-as interpret-as="cardinal">%s</say-as>
         </speak>
-        """.format(year=year, result=car_accidents.get_water_usage_stockholm(year))
-    )
+        """ % (year, car_accidents.get_water_usage_stockholm(year)),
+        end_session=True, is_ssml=True)
