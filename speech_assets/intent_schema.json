@@ -1,0 +1,29 @@
+{
+  "intents": [
+    {
+      "intent": "AMAZON.HelpIntent",
+      "slots": []
+    },
+    {
+      "intent": "AMAZON.StopIntent",
+      "slots": []
+    },
+    {
+      "intent": "AMAZON.CancelIntent",
+      "slots": []
+    },
+    {
+      "intent": "CarAccidents",
+      "slots": [
+        {
+          "name": "City",
+          "type": "Cities"
+        },
+        {
+          "name": "Year",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    }
+  ]
+}
