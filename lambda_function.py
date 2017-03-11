@@ -5,7 +5,6 @@ Happy Hacking!
 """
 
 from ask import alexa
-import useful_science
 
 def lambda_handler(request_obj, context={}):
     ''' All requests start here '''    
